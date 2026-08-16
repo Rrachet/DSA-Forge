@@ -2,7 +2,7 @@
 
 > **A production-grade Data Structures & Algorithms laboratory in Java.**
 
-DSA Forge is not a dump of LeetCode answers. It is a structured study and engineering repository covering reusable data structures, algorithmic patterns, complexity analysis, automated tests, performance benchmarks, and continuous integration.
+DSA Forge is not a dump of LeetCode answers. It is a structured engineering repository covering reusable data structures, algorithmic patterns, complexity analysis, automated tests, performance benchmarks, and continuous integration.
 
 ## What this repository demonstrates
 
@@ -19,16 +19,16 @@ DSA Forge is not a dump of LeetCode answers. It is a structured study and engine
 
 | Area | Included |
 |---|---|
-| Arrays & searching | Binary search, two pointers, prefix-style techniques |
-| Strings | Palindrome and frequency patterns |
-| Linked lists | Reversal and pointer manipulation |
-| Stack & queue | Parentheses validation and queue fundamentals |
-| Hashing | Frequency counting and lookup |
-| Trees | Binary search tree operations |
-| Heaps | Top-K / priority-queue patterns |
-| Graphs | BFS and DFS |
-| Sorting | Merge sort and quick sort |
-| Recursion | Factorial and recursive decomposition |
+| Arrays & searching | Binary search, two pointers, sliding window |
+| Strings | Palindrome validation, Trie |
+| Linked lists | In-place reversal |
+| Stack & queue | Parentheses validation, circular queue, monotonic stack |
+| Hashing | Frequency counting |
+| Trees | Binary search tree |
+| Heaps | Top-K / priority-queue pattern |
+| Graphs | BFS, DFS, Union-Find, Dijkstra, topological sorting |
+| Sorting | Merge sort, quick sort |
+| Recursion | Factorial |
 | Backtracking | Subset generation |
 | Greedy | Activity selection |
 | Dynamic programming | 0/1 knapsack |
@@ -53,13 +53,6 @@ src/main/java/com/rrachet/dsaforge/
 └── dynamicprogramming/
 
 src/test/java/com/rrachet/dsaforge/
-├── arrays/
-├── strings/
-├── linkedlist/
-├── stack/
-├── trees/
-└── sorting/
-
 benchmarks/
 docs/
 .github/workflows/
@@ -71,7 +64,7 @@ docs/
 mvn clean test
 ```
 
-Run the packaged application build:
+Build the project:
 
 ```bash
 mvn clean package
@@ -97,14 +90,15 @@ JMH benchmark sources live under `benchmarks/`. They are intentionally separated
 - [x] Complexity documentation
 - [x] Pattern catalogue
 - [x] Initial JMH benchmark suite
-- [ ] Tries
-- [ ] Union-Find / Disjoint Set
-- [ ] Topological sorting
-- [ ] Dijkstra and shortest paths
-- [ ] Sliding window catalogue
-- [ ] Monotonic stack catalogue
+- [x] Tries
+- [x] Union-Find / Disjoint Set
+- [x] Topological sorting
+- [x] Dijkstra and shortest paths
+- [x] Sliding window catalogue
+- [x] Monotonic stack catalogue
 - [ ] Segment tree
 - [ ] Advanced dynamic programming
+- [ ] Expanded problem catalogue
 
 ## License
 

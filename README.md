@@ -14,6 +14,7 @@ DSA Forge is not a dump of LeetCode answers. It is a structured engineering repo
 - Maven project structure
 - GitHub Actions CI
 - Clear JavaDoc and engineering documentation
+- A curated 100-problem interview track organised by pattern
 
 ## Coverage
 
@@ -32,6 +33,14 @@ DSA Forge is not a dump of LeetCode answers. It is a structured engineering repo
 | Backtracking | Subset generation |
 | Greedy | Activity selection |
 | Dynamic programming | 0/1 knapsack |
+
+## Interview track
+
+### [100-Problem Interview Catalogue](docs/interview-100/catalogue.md)
+
+100 carefully selected problems across 10 patterns, progressing from foundation to advanced interview level. A problem is only considered complete when implementation, meaningful tests, and complexity analysis exist.
+
+The track is designed to demonstrate **pattern recognition and engineering discipline**, not solution-count chasing.
 
 ## Project structure
 
@@ -55,6 +64,7 @@ src/main/java/com/rrachet/dsaforge/
 src/test/java/com/rrachet/dsaforge/
 benchmarks/
 docs/
+└── interview-100/
 .github/workflows/
 ```
 
@@ -90,15 +100,16 @@ JMH benchmark sources live under `benchmarks/`. They are intentionally separated
 - [x] Complexity documentation
 - [x] Pattern catalogue
 - [x] Initial JMH benchmark suite
+- [x] 100-problem interview catalogue
 - [x] Tries
 - [x] Union-Find / Disjoint Set
 - [x] Topological sorting
 - [x] Dijkstra and shortest paths
 - [x] Sliding window catalogue
 - [x] Monotonic stack catalogue
+- [ ] Implement the remaining interview-track solutions incrementally
 - [ ] Segment tree
 - [ ] Advanced dynamic programming
-- [ ] Expanded problem catalogue
 
 ## License
 

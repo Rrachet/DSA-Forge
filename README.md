@@ -2,96 +2,55 @@
 
 > **An engineering-first Data Structures & Algorithms laboratory in Java.**
 
-DSA Forge is a focused repository for understanding the algorithms and data structures that sit underneath real software systems. The goal is not to collect solutions. The goal is to implement, test, measure, and explain them well enough to discuss the engineering trade-offs in an interview.
+DSA Forge is built around a simple idea: don't just solve problems — **implement, test, measure and explain the engineering trade-offs behind them.**
 
-## Why this repository exists
+[![Java](https://img.shields.io/badge/Java-21-orange?style=flat-square&logo=openjdk)](https://www.java.com/) [![Build](https://img.shields.io/badge/Build-Maven-blue?style=flat-square&logo=apachemaven)](https://maven.apache.org/)
 
-Strong software engineering starts with fundamentals. DSA Forge treats each topic as an engineering artifact:
+## What this demonstrates
 
-- implement the data structure or algorithm from first principles
-- state time and space complexity explicitly
-- test boundary conditions and failure cases
-- benchmark performance where measurement is meaningful
-- document the pattern and when it should be used
-- connect interview problems to real systems where appropriate
+- Strong algorithmic fundamentals
+- Complexity analysis
+- Boundary and failure-case testing
+- Systems-oriented data structures
+- Performance benchmarking with JMH
+- Clear engineering documentation
 
-This makes the repository useful for **SWE interview preparation, algorithm study, and practical engineering discussion**.
+## Systems track
 
-## Core coverage
-
-| Area | Examples |
-|---|---|
-| Arrays & searching | Binary search, two pointers, sliding window, prefix patterns |
-| Strings | Trie, encoding/decoding, palindrome patterns |
-| Linked lists | In-place reversal and pointer manipulation |
-| Stack & queue | Circular queue, monotonic stack, parentheses validation |
-| Hashing | Frequency counting and lookup patterns |
-| Cache design | **O(1) LRU and LFU caches** |
-| Trees | Binary search tree and traversal patterns |
-| Heaps | Top-K and priority-queue patterns |
-| Graphs | BFS, DFS, Union-Find, Dijkstra, topological sorting |
-| Sorting | Merge sort, quick sort |
-| Backtracking | Subset generation |
-| Greedy | Activity selection |
-| Dynamic programming | Knapsack, coin change, house robber, climbing stairs |
-
-## Engineering tracks
-
-### 1. Algorithm fundamentals
-
-Reusable implementations organised by data structure and algorithmic pattern. Every implementation should have an explicit complexity target and meaningful tests.
-
-### 2. Systems-oriented data structures
-
-The repository now connects classic DSA to problems that appear in real services:
-
-| Component | Engineering concept | Target complexity |
+| Component | Real-world concept | Target complexity |
 |---|---|---|
-| LRU Cache | bounded caching + recency | O(1) average get/put |
-| LFU Cache | frequency-based eviction + LRU tie-break | O(1) average get/put |
-| Token Bucket | rate limiting + controlled admission | O(1) acquire |
-| Bounded Blocking Queue | producer/consumer backpressure | O(1) queue operations |
-| Consistent Hash Ring | distributed key placement | O(log V) lookup |
-| Task Scheduler | priority scheduling | O(log n) submit/next |
+| LRU Cache | Bounded caching | O(1) average get/put |
+| LFU Cache | Frequency-based eviction | O(1) average get/put |
+| Token Bucket | Rate limiting | O(1) acquire |
+| Bounded Blocking Queue | Backpressure / producer-consumer | O(1) queue operations |
+| Consistent Hash Ring | Distributed key placement | O(log V) lookup |
+| Task Scheduler | Priority scheduling | O(log n) submit/next |
 
-The goal is to understand not only how each structure works, but **why it exists, what trade-offs it makes, and where it fits in a larger system**.
+These are intentionally small implementations for understanding the primitives underneath larger systems — not replacements for production infrastructure such as Redis or Kafka.
 
-### 3. Interview pattern track
+## Algorithm coverage
 
-### [100-Problem Interview Catalogue](docs/interview-100/catalogue.md)
-
-100 selected problems across 10 patterns, progressing from foundation to advanced interview level. A problem is only considered complete when implementation, meaningful tests, and complexity analysis exist.
-
-The track is designed around **pattern recognition, correctness, and communication**, not solution-count chasing.
+Arrays · Strings · Linked Lists · Stacks · Queues · Hashing · Trees · Heaps · Graphs · Sorting · Backtracking · Greedy · Dynamic Programming · Tries · Union-Find · Shortest Paths
 
 ## Systems in one picture
 
 ```text
-                   APPLICATION
-                       |
-             +---------+---------+
-             |                   |
-          CACHE              RATE LIMIT
-         LRU/LFU             TOKEN BUCKET
-             |                   |
-             +---------+---------+
-                       |
-                WORK / TASK QUEUE
-                 BOUNDED QUEUE
-                       |
-                 TASK SCHEDULER
-                       |
-              DISTRIBUTED STORAGE
-               CONSISTENT HASHING
+Application
+    │
+    ├── Cache ───────────── LRU / LFU
+    │
+    ├── Admission Control ─ Token Bucket
+    │
+    ├── Work Queue ──────── Bounded Queue
+    │
+    ├── Scheduling ──────── Priority Scheduler
+    │
+    └── Distribution ────── Consistent Hashing
 ```
 
-These are intentionally small implementations. They are not production replacements for Redis, Kafka, cloud load balancers, or distributed databases. They are engineering exercises for understanding the primitives underneath those systems.
+## Testing + benchmarking
 
-## Performance engineering
-
-JMH benchmarks live under `benchmarks/` and are intentionally separated from correctness tests.
-
-The benchmark workflow is:
+Correctness and performance are intentionally separate:
 
 ```text
 Hypothesis
@@ -100,56 +59,34 @@ Implementation
    ↓
 Correctness tests
    ↓
-Benchmark
+JMH benchmark
    ↓
 Interpretation
 ```
 
-Benchmark numbers should be measured rather than copied into documentation. When a benchmark is added, record the input shape, environment, and what the result actually demonstrates.
+Benchmark results should be reproduced rather than copied into documentation.
 
-## Project structure
+## Repository structure
 
 ```text
-src/main/java/com/rrachet/dsaforge/
-├── arrays/
-├── backtracking/
-├── dynamicprogramming/
-├── graphs/
-├── hashing/
-├── heaps/
-├── linkedlist/
-├── queue/
-├── recursion/
-├── sorting/
-├── stack/
-├── strings/
-├── systems/
-└── trees/
-
-src/test/java/com/rrachet/dsaforge/
-├── ...
-└── systems/
-
-benchmarks/
-docs/
-├── algorithms.md
-├── complexity.md
-├── patterns.md
-└── interview-100/
-.github/workflows/
+src/main/java/          implementations
+src/test/java/          automated tests
+benchmarks/             JMH benchmarks
+docs/                   complexity + patterns
+.github/workflows/      CI
 ```
 
 ## Run locally
 
-Requires **Java 21** and Maven.
+Requires **Java 21 + Maven**.
 
-Run the complete test suite:
+Run tests:
 
 ```bash
 mvn clean test
 ```
 
-Build the project:
+Build:
 
 ```bash
 mvn clean package
@@ -157,14 +94,13 @@ mvn clean package
 
 ## Engineering standards
 
-1. Prefer clear implementations before clever optimisations.
+1. Prefer clarity before clever optimisation.
 2. State time and space complexity for non-trivial algorithms.
-3. Test empty, singleton, boundary, duplicate, concurrent, and invalid inputs where applicable.
-4. Keep APIs small and deterministic where possible.
-5. Use the standard library when it is the right engineering choice, while implementing core structures to understand their internals.
-6. Separate correctness testing from performance measurement.
-7. Never claim benchmark results without actually measuring them.
-8. Explain trade-offs, not just final answers.
+3. Test empty, singleton, boundary, duplicate, concurrent and invalid inputs where applicable.
+4. Keep APIs small and deterministic.
+5. Separate correctness tests from performance measurement.
+6. Never claim benchmark results without measuring them.
+7. Explain trade-offs, not just final answers.
 
 ## Roadmap
 
@@ -172,24 +108,16 @@ mvn clean package
 - [x] Automated unit tests
 - [x] Complexity documentation
 - [x] Pattern catalogue
-- [x] Initial JMH benchmark suite
-- [x] 100-problem interview catalogue
-- [x] Trie
-- [x] Union-Find / Disjoint Set
-- [x] Topological sorting
-- [x] Dijkstra and shortest paths
-- [x] Sliding window catalogue
-- [x] Monotonic stack catalogue
-- [x] O(1) LRU cache
-- [x] O(1) LFU cache
-- [x] Token-bucket rate limiter
-- [x] Bounded blocking queue
-- [x] Consistent hashing ring
-- [x] Priority task scheduler
-- [ ] Complete the remaining interview-track solutions incrementally
+- [x] JMH benchmark suite
+- [x] Systems-oriented data structures
+- [ ] Complete remaining interview-track solutions
 - [ ] Segment tree
 - [ ] Advanced dynamic programming
-- [ ] Expand benchmark coverage and publish reproducible results
+- [ ] Expand reproducible benchmark coverage
+
+## Product + engineering signal
+
+DSA Forge is the fundamentals layer of my portfolio: it demonstrates the computer-science depth I bring into larger product and software systems.
 
 ## License
 
